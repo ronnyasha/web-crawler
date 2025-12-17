@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.crawler.ui.MainController">
+
+    <top>
+        <VBox spacing="8" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <children>
+                <GridPane hgap="8" vgap="8">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="15"/>
+                        <ColumnConstraints percentWidth="85"/>
+                    </columnConstraints>
+
+                    <children>
+                        <Label text="Start URL:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="startUrlField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Search term:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="termField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Max pages:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField fx:id="maxPagesField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    </children>
+                </GridPane>
+
+                <HBox spacing="10">
+                    <children>
+                        <Button fx:id="startButton" text="Start" onAction="#onStartClicked"/>
+                        <Button fx:id="stopButton" text="Stop" disable="true"/>
+                        <ProgressBar fx:id="progressBar" prefWidth="300"/>
+                        <Label fx:id="statusLabel" text="Idle"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="resultsTable">
+            <columns>
+                <TableColumn fx:id="urlColumn" text="URL" prefWidth="300"/>
+                <TableColumn fx:id="titleColumn" text="Title" prefWidth="200"/>
+                <TableColumn fx:id="statusColumn" text="Status" prefWidth="80"/>
+                <TableColumn fx:id="hitsColumn" text="Hits" prefWidth="60"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <Label fx:id="statsLabel"
+               text="Pages: 0 | Hits: 0"
+               BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+        </Label>
+    </bottom>
+
+</BorderPane>
